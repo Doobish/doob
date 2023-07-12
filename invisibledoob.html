@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invisible Cow Game</title>
+    <style>
+        #cow {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background-image: url('cow.png'); /* Replace with your own cow image */
+            background-size: cover;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invisible Cow Game</h1>
+    <div id="cow"></div>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const cow = document.getElementById('cow');
+            const maxX = window.innerWidth - cow.offsetWidth;
+            const maxY = window.innerHeight - cow.offsetHeight;
+            
+            function playSound(volume) {
+                const audio = new Audio('moo.mp3'); /* Replace with your own cow sound */
+                audio.volume = volume;
+                audio.play();
+            }
+            
+            function calculateDistance(x, y) {
+                const cowX = cow.offsetLeft + cow.offsetWidth / 2;
+                const cowY = cow.offsetTop + cow.offsetHeight / 2;
+                const dx = cowX - x;
+                const dy = cowY - y;
+                return Math.sqrt(dx * dx + dy * dy);
+            }
+            
+            function handleClick(event) {
+                const distance = calculateDistance(event.clientX, event.clientY);
+                const maxDistance = Math.sqrt(maxX * maxX + maxY * maxY);
+                const volume = 1 - distance / maxDistance;
+                playSound(volume);
+            }
+            
+            cow.addEventListener('click', handleClick);
+        });
+    </script>
+</body>
+</html>
