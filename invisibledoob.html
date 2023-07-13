@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Invisible Cow Game</title>
+    <title>Invisible Doob</title>
     <style>
         #cow {
             width: 200px;
@@ -14,25 +14,25 @@
     </style>
 </head>
 <body>
-    <h1>Invisible Cow Game</h1>
-    <div id="cow"></div>
+    <h1>Invisible Doob</h1>
+    <div id="doob"></div>
     <script>
         window.addEventListener('DOMContentLoaded', (event) => {
-            const cow = document.getElementById('cow');
-            const maxX = window.innerWidth - cow.offsetWidth;
-            const maxY = window.innerHeight - cow.offsetHeight;
+            const doob = document.getElementById('doob');
+            const maxX = window.innerWidth - doob.offsetWidth;
+            const maxY = window.innerHeight - doob.offsetHeight;
             
             function playSound(volume) {
-                const audio = new Audio('moo.mp3'); /* Replace with your own cow sound */
+                const audio = new Audio('doob.mp3'); /* Replace with your own doob sound */
                 audio.volume = volume;
                 audio.play();
             }
             
             function calculateDistance(x, y) {
-                const cowX = cow.offsetLeft + cow.offsetWidth / 2;
-                const cowY = cow.offsetTop + cow.offsetHeight / 2;
-                const dx = cowX - x;
-                const dy = cowY - y;
+                const doobX = doob.offsetLeft + doob.offsetWidth / 2;
+                const doobY = doob.offsetTop + doob.offsetHeight / 2;
+                const dx = doobX - x;
+                const dy = doobY - y;
                 return Math.sqrt(dx * dx + dy * dy);
             }
             
@@ -43,7 +43,7 @@
                 playSound(volume);
             }
             
-            cow.addEventListener('click', handleClick);
+            doob.addEventListener('click', handleClick);
         });
     </script>
 </body>
